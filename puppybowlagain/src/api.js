@@ -6,7 +6,7 @@ export async function getPlayers() {
         const result = await response.json();
         return result.data.players;
     } catch (error ) {
-        console.log(error);
+        console.log(error);     
     }
 }
 
@@ -38,10 +38,10 @@ export async function createPlayer(player){
 
 export async function deletePlayer(playerId){
     try {
-        const response = await fetch(`${API_URL}/players/${playerId}`, {
-            method: "DELETE",
+        const response = await fetch(`${API_URL}/players/${playerId}`,{
+            method: 'DELETE',
         });
-        await response.json();
+    await response.json();
     } catch (error) {
         console.error(error);
     }
@@ -52,7 +52,7 @@ export async function getTeams() {
         const response = await fetch(`${API_URL}/teams`);
         const result = await response.json();
         return result.data.teams;
-    } catch (error) {
-        console.error(error);
+    } catch (error ) {
+        console.log(error);     
     }
 }
