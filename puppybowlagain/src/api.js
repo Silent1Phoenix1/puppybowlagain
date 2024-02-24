@@ -1,12 +1,12 @@
-const API_URL = "https://fsa-puppy-bowl.herokuapp.com/api/2308-ac-pt-web-pt-b";
+const API_URL = "https://fsa-puppy-bowl.herokuapp.com/api/2308-acc-et-web-pt-b";
 
 export async function getPlayers() {
     try {
         const response = await fetch(`${API_URL}/players`);
         const result = await response.json();
         return result.data.players;
-    } catch (error) {
-        console.error(error);
+    } catch (error ) {
+        console.log(error);
     }
 }
 
@@ -23,11 +23,11 @@ export async function getPlayer(playerId){
 export async function createPlayer(player){
     try {
         const response = await fetch(`${API_URL}/players`, {
-            method: "POST",
+            method: 'POST',
             headers: {
-                'Content-Type': 'applications/json',
-            },
-            body: JSON.stringify(player)
+          'Content-Type': 'application/json',
+        },
+            body: JSON.stringify(player),
         });
         const result = await response.json();
         return result.data.newPlayer;
