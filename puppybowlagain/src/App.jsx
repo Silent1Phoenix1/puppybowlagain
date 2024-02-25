@@ -8,6 +8,7 @@ import { PlayerDetails} from './components/PlayerDetails';
 function App() {
   const [players,setPlayers] = useState([]);
   const [player,setPlayer] = useState({});
+  const [filter,setFilter] = useState("");
  
   // this happens whenever the app is loaded
   useEffect(() => {
@@ -38,6 +39,10 @@ function handleSubmit(evt) {
   });
 }
 
+function handleFilter(evt){
+  setFilter(evt.target.value);
+}
+
   return (
     <div onClick= {() => setPlayer({})}>
       <h1> It's The Puppy Bowl!!! </h1>
@@ -51,6 +56,7 @@ function handleSubmit(evt) {
         <button type="submit"> Add Player </button>
 
       </form>
+      <input type="text" name="filter" value = {filter} onChange = {handleFilter}/>
       <table>
         <thead>
           <tr>
@@ -60,7 +66,8 @@ function handleSubmit(evt) {
           </tr>
         </thead>
         <tbody>
-          {players.map((player) => {
+          {players.filter(player => player.name.toLowerCase().includes(filter.toLowerCase()))
+          .map((player) => {
             return (
               <Player 
               key ={player.id} 
@@ -71,7 +78,7 @@ function handleSubmit(evt) {
           })}
         </tbody>
       </table>
-        {/* not fully sure how dialog works but its cool */}
+        // {/* not fully sure how dialog works but its cool */}
     </div>
   );
 }
