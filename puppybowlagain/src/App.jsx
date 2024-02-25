@@ -78,7 +78,6 @@ function handleFilter(evt){
           })}
         </tbody>
       </table>
-        // {/* not fully sure how dialog works but its cool */}
     </div>
   );
 }
